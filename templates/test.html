@@ -13,6 +13,49 @@
         <link rel="stylesheet" href="../static/css/bootstrap.min.css">
 
         <link rel="stylesheet/less" type="text/css" href="../static/js/metronomik-player/m-player.less" />
+        <script type='text/javascript'>
+        var Tune = {};
+        var rdioIDs = [];
+        alert("HEY");
+
+
+        function getArtistData(data){
+            Tune.response = data.response;
+            Tune.artists = data.response.artists;
+            var regEx = /[^:]+$/;
+            var name;
+            var id;
+            for(var artist in Tune.artists) {
+                name = Tune.artists[artist].name;
+                id = Tune.artists[artist].foreign_ids[0].foreign_id.match(regEx).toString();
+                rdioIDs.push({"name":name, "id":id});
+            }
+            Tune.rdio = rdioIDs;
+        }
+
+        function callEchoNext(b, a, l) {
+            return function (){
+                var before = b;
+                var after = a;
+                var location = l;
+                $.ajax({
+                    url: "http://developer.echonest.com/api/v4/artist/search",
+                    dataType: "jsonp",
+                    traditional: true,
+                    data: {
+                        api_key: "DK23QQCJUWLKC1HPL",
+                        format: "jsonp",
+                        artist_start_year_after: after,
+                        artist_start_year_before: before,
+                        artist_location: location,
+                        bucket: ["id:rdio-us-streaming", "years_active", "artist_location"],
+                    },
+                    success: getArtistData
+                });
+            };
+        }
+        </script>
+
         <style>
             body {
               margin: 0;
@@ -36,7 +79,15 @@
         <![endif]-->
 
     <script src="https://www.rdio.com/api/api.js?client_id=Of3Y_P29zCgZzjVPUpWb7g"></script>
+    <script src= "../static/js/vendor/startup.js" type="type/javascript"> </script>
+
     <h1> Time Traveler</h1>
+    <div id="target">
+      Click here
+    </div>
+    <div id="other">
+      Trigger the handler
+    </div>
     <h2> Do the time electric </h2>
     <div id="player" style="
                        width: 70%;
@@ -56,5 +107,9 @@
 
 
         <script src="../static/js/main.js"></script>
+
+        <script type="text/javascript">
+            $("#target").on("click", callEchoNext('1980,' '1999', 'berlin'));
+        </script>
     </body>
 </html>

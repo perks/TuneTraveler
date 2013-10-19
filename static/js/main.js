@@ -1,11 +1,8 @@
-var Tune = {};
-var rdioIDs = [];
 
 
 $(function () {
-
-
-
+	var Tune = {};
+	var rdioIDs = [];
 
 	if (!("R" in window)) {
 		alert('Something has gone wrong!');
@@ -22,27 +19,32 @@ $(function () {
 
 	});
 
+function getArtistData(data){
+		Tune.response = data.response;
+		Tune.artists = data.response.artists;
+		var regEx = /[^:]+$/;
+		var name;
+		var id;
+		for(var artist in Tune.artists) {
+			name = Tune.artists[artist].name;
+			id = Tune.artists[artist].foreign_ids[0].foreign_id.match(regEx).toString();
+			rdioIDs.push({"name":name, "id":id});
+		}
+		Tune.rdio = rdioIDs;
+	}
+
+function callEchoNext(b, a, l) {
+		var before = b;
+		var after = a;
+		var location = l;
+
+	}
+
 
 });
 
-
-function getArtistData(data){
-	Tune.response = data.response;
-	Tune.artists = data.response.artists;
-	var regEx = /[^:]+$/;
-	var name;
-	var id;
-	for(var artist in Tune.artists) {
-		name = Tune.artists[artist].name;
-		id = Tune.artists[artist].foreign_ids[0].foreign_id.match(regEx).toString();
-		rdioIDs.push({"name":name, "id":id});
-	}
-}
-
-function callEchoNext(b, a, l) {
-	var before = b;
-	var after = a;
-	var location = l;
+$('#target').on('click', function() {
+	console.log("Madeit");
 	$.ajax({
 		url: "http://developer.echonest.com/api/v4/artist/search",
 		dataType: "jsonp",
@@ -50,14 +52,16 @@ function callEchoNext(b, a, l) {
 		data: {
 			api_key: "DK23QQCJUWLKC1HPL",
 			format: "jsonp",
-			artist_start_year_after: after,
-			artist_start_year_before: before,
-			artist_location: location,
+			artist_start_year_after: '1092',
+			artist_start_year_before: '1950',
+			artist_location: 'berlin',
 			bucket: ["id:rdio-us-streaming", "years_active", "artist_location"],
 		},
-		success: getArtistData
-	});
-}
+			success: getArtistData
+		});
+});
+
+
 
 
 
