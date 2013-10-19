@@ -1,4 +1,5 @@
 
+
 jQuery(function($){
 	$.TuneTravel = function(tunez) {
 		tunez.Query = function(after, before, location, callbackF) {
@@ -22,6 +23,9 @@ jQuery(function($){
 
 	});
 });
+
+
+
 $(function () {
 
 	var p = 0;
@@ -30,16 +34,40 @@ $(function () {
 		return;
 	}
 
+	toastr.options = {
+	  "closeButton": true,
+	  "debug": false,
+	  "positionClass": "toast-bottom-right",
+	  "onclick": null,
+	  "showDuration": "300",
+	  "hideDuration": "1000",
+	  "timeOut": "5000",
+	  "extendedTimeOut": "1000",
+	  "showEasing": "swing",
+	  "hideEasing": "linear",
+	  "showMethod": "fadeIn",
+	  "hideMethod": "fadeOut"
+	};
+
+
 	R.ready(function () {
 
 		var player = new metronomik.player("player", R.player);
 
 		$(".m-playToggle").click(function(){
-
-			console.log("awesome");
+			if(!Tune.tracks) {
+				toastr.warning("Sorry no tracks matched");
+			}
 			R.player.queue.add(Tune.tracks[p]);
 			p = p + 1;
 		});
+
+		R.player.on('change:playingTrack',   function(data) {
+          Tune.glob = data;
+          toastr.info(Tune.glob.get("name"), Tune.glob.get("artist"));
+        });
+
+
 
 	});
 
