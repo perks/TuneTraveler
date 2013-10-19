@@ -28,38 +28,47 @@ h1{
 }
 
 .scene {
-  max-height: 25%px;
-  max-width: 100%;
+
   position: absolute;
-  overflow: hidden; 
+  
   margin: 0 auto;
   padding: 0;
   z-index:-1;
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  left: -100px;
+  right: -100px;
+  max-width: 1400px;
 
 }
 
 .layer:nth-child(1) {
-  position: absolute;
+  position: relative;
   opacity: 0.15;
+
 }
 .layer:nth-child(2) {
-  position: absolute;
+  position: relative;
   opacity: 0.30;
+
 }
 .layer:nth-child(3) {
-  position: absolute;
+  position: relative;
   opacity: 0.45;
+
 }
 .layer:nth-child(4) {
-  position: absolute;
+  position: relative;
   opacity: 0.60;
+
 }
 .layer:nth-child(5) {
-  position: absolute;
+  position: relative;
   opacity: 0.75;
 }
 .layer:nth-child(6) {
-  position: absolute;
+  position: relative;
   opacity: 0.90;
 }
 
