@@ -27,6 +27,13 @@ def page_not_found(e):
 def index():
     return render_template('index.html')
 
+@app.route('/helper')
+def helper():
+		return render_template('helper.html')
+
+@app.route('/test')
+		return render_template('test.html')
+
 
 #----------------------------------------
 # launch
