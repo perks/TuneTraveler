@@ -6,7 +6,7 @@
 
 
 body {
-	text-align: center;
+  text-align: center;
   margin: 0;
   background: url('../img/bg.jpg');
   background-size: 100% 100%;
@@ -26,12 +26,31 @@ img {
 }
 
 
-h1{
-	font-family: 'Oldenburg';
+h1 {
+  font-family: 'Oldenburg';
+  color: #FFF;
+  text-shadow: black 3px 3px 5px;
+}
+
+#logoz {
+
+  font-family: 'Oldenburg';
+  color: #FFF;
+  text-shadow: black 3px 3px 5px;
+
+}
+
+p {
+  color: #FFF;
+  text-shadow: black 2px 2px 3px;
+}
+
+input {
+  box-shadow: black 2px 2px 2px;
 }
 
 .btn-success {
-	width: 95%;
+  width: 95%;
 }
 
 .scene {
@@ -82,9 +101,8 @@ h1{
 }
 
 .jumbo {
-	position: absolute;
+  position: absolute;
 }
-
 
 
 
