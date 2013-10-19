@@ -32,6 +32,7 @@ def helper():
 		return render_template('helper.html')
 
 @app.route('/test')
+def test():
 		return render_template('test.html')
 
 
