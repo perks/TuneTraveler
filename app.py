@@ -27,11 +27,11 @@ def page_not_found(e):
 def index():
     return render_template('index.html')
 
-@app.route('/helper')
+@app.route('/helper.html')
 def helper():
 		return render_template('helper.html')
 
-@app.route('/test')
+@app.route('/test.html')
 def test():
 		return render_template('test.html')
 
