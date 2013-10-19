@@ -5,6 +5,18 @@
    ========================================================================== */
 
 
+body {
+	text-align: center;
+}
+
+.btn-success {
+	width: 95%;
+}
+
+h1{
+	font-family: 'Oldenburg';
+}
+
 
 
 
