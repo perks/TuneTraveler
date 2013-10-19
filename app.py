@@ -1,5 +1,6 @@
 import os
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, url_for, request, session, redirect
+from flask_oauth import OAuth
 
 #----------------------------------------
 # initialization
@@ -11,6 +12,21 @@ app.config.update(
     DEBUG = True,
 )
 
+
+#----------------------------------------
+# Authentication
+#----------------------------------------
+oauth = OAuth()
+
+rdio = outh.remote_app('rdio',
+				base_url='www.rdio.com',
+		    request_token_url=None,
+		    access_token_url='/oauth/access_token',
+		    authorize_url='oauth2/authorize',
+		    consumer_key='Of3Y_P29zCgZzjVPUpWb7g',
+		    consumer_secret='vxQj9k4Y1IhtKILgOVmLtg',
+		    request_token_params={'scope': ('email, ')}
+		)
 
 #----------------------------------------
 # controllers
