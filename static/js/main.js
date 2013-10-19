@@ -26,6 +26,18 @@ $(function () {
 });
 
 
+function getArtistData(data){
+	Tune.response = data.response;
+	Tune.artists = data.response.artists;
+	var regEx = /[^:]+$/;
+	var name;
+	var id;
+	for(var artist in Tune.artists) {
+		name = Tune.artists[artist].name;
+		id = Tune.artists[artist].foreign_ids[0].foreign_id.match(regEx).toString();
+		rdioIDs.push({"name":name, "id":id});
+	}
+}
 
 function callEchoNext(b, a, l) {
 	var before = b;
@@ -48,17 +60,7 @@ function callEchoNext(b, a, l) {
 }
 
 
-function getArtistData(data){
-	Tune.response = data.response;
-	Tune.artists = data.response.artists;
-	var regEx = /[^:]+$/;
-	for(var artist in Tune.artists) {
-		var name = Tune.artists[artist].name;
-		var id = Tune.artists[artist].foreign_ids[0].foreign_id.match(regEx);
-		rdioIDs.push({name : id });
-		console.log(name, id);
-	}
-}
+
 
 
 
