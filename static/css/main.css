@@ -6,22 +6,18 @@
 
 
 body {
+  background: url(../img/bg.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   text-align: center;
-  margin: 0;
-  background: url('../img/bg.jpg');
-  background-size: 100% 100%;
-
 }
 
 img {
   display: block;
   width: 100%;
   background-attachment: fixed;
-  -webkit-filter: blur(2px);
-  -moz-filter: blur(2px);
-  -o-filter: blur(2px);
-  -ms-filter: blur(2px);
-  filter: blur(2px);
 
 }
 
@@ -45,7 +41,7 @@ p {
   text-shadow: black 2px 2px 3px;
 }
 
-input {
+input[type=text] {
   box-shadow: black 2px 2px 2px;
 }
 
@@ -56,8 +52,6 @@ input {
 .scene {
 
 
-
-  position: relative;
   margin: 0 auto;
   padding: 0;
   z-index:-1;
@@ -66,7 +60,8 @@ input {
   top: 0;
   left: -400px;
   right: -400px;
-  max-width: 1600px;
+  max-width: 1800px;
+
 
 }
 
