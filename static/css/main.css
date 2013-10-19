@@ -29,38 +29,37 @@ h1{
 
 .scene {
 
-  position: absolute;
-  
+  position: relative;
   margin: 0 auto;
   padding: 0;
   z-index:-1;
   position: fixed;
   bottom: 0;
   top: 0;
-  left: -100px;
-  right: -100px;
-  max-width: 1400px;
+  left: -400px;
+  right: -400px;
+  max-width: 1600px;
 
 }
 
 .layer:nth-child(1) {
   position: relative;
-  opacity: 0.90;
+  opacity: 0.98;
 
 }
 .layer:nth-child(2) {
   position: relative;
-  opacity: 0.90;
+  opacity: 0.92;
 
 }
 .layer:nth-child(3) {
   position: relative;
-  opacity: 0.90;
+  opacity: 1.00;
 
 }
 .layer:nth-child(4) {
   position: relative;
-  opacity: 0.90;
+  opacity: 1.00;
 
 }
 .layer:nth-child(5) {
@@ -69,7 +68,7 @@ h1{
 }
 .layer:nth-child(6) {
   position: relative;
-  opacity: 0.90;
+  opacity: 0.95;
 }
 
 .jumbo {
