@@ -31,6 +31,25 @@
                 rdioIDs.push({"name":name, "id":id});
             }
             Tune.rdio = rdioIDs;
+            Tune.tracks = [];
+
+
+
+
+            for(var i = 0; i < Tune.rdio.length(); i++) {
+                R.request({
+                    method: "getTracksForArtist",
+                    content: {
+                        artist: Tune.rdio.id[i]
+                    },
+                    success: function(response) {
+                        Tune.tracks.push(response.result[0].radio.key)
+                    },
+
+                    error: function(response) {
+                        console.log("error: " + reponse.message;
+                    }
+            });
         }
 
         function callEchoNext(b, a, l) {
@@ -90,8 +109,8 @@
     </div>
     <h2> Do the time electric </h2>
 
-    
-     
+
+
     <div id="player" style="
                        width: 70%;
                        left: 20px;
