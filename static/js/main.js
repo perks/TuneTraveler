@@ -1,12 +1,11 @@
 var Tune = {};
+var rdioIDs = [];
+
 
 $(function () {
 
 
-	function getArtistData(data){
-		Tune.response = data.response;
-		Tune.artists = data.response.artists;
-	}
+
 
 	if (!("R" in window)) {
 		alert('Something has gone wrong!');
@@ -24,6 +23,26 @@ $(function () {
 	});
 
 
+});
+
+
+function getArtistData(data){
+	Tune.response = data.response;
+	Tune.artists = data.response.artists;
+	var regEx = /[^:]+$/;
+	var name;
+	var id;
+	for(var artist in Tune.artists) {
+		name = Tune.artists[artist].name;
+		id = Tune.artists[artist].foreign_ids[0].foreign_id.match(regEx).toString();
+		rdioIDs.push({"name":name, "id":id});
+	}
+}
+
+function callEchoNext(b, a, l) {
+	var before = b;
+	var after = a;
+	var location = l;
 	$.ajax({
 		url: "http://developer.echonest.com/api/v4/artist/search",
 		dataType: "jsonp",
@@ -31,15 +50,20 @@ $(function () {
 		data: {
 			api_key: "DK23QQCJUWLKC1HPL",
 			format: "jsonp",
-			artist_start_year_after: "1969",
-			artist_start_year_before: "1990",
-			artist_location: "london",
+			artist_start_year_after: after,
+			artist_start_year_before: before,
+			artist_location: location,
 			bucket: ["id:rdio-us-streaming", "years_active", "artist_location"],
 		},
 		success: getArtistData
 	});
+}
 
-});
+
+
+
+
+
 
 
 
