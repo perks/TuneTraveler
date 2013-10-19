@@ -11,7 +11,6 @@ app.config.update(
     DEBUG = True,
 )
 
-
 #----------------------------------------
 # controllers
 #----------------------------------------
@@ -27,6 +26,14 @@ def page_not_found(e):
 @app.route("/")
 def index():
     return render_template('index.html')
+
+@app.route('/helper.html')
+def helper():
+		return render_template('helper.html')
+
+@app.route('/test.html')
+def test():
+		return render_template('test.html')
 
 
 #----------------------------------------
