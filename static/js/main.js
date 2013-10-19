@@ -18,12 +18,13 @@ jQuery(function($){
 			  });
 		};
 		return tunez;
-	}({});
-});
+	}({
 
+	});
+});
 $(function () {
 
-
+	var p = 0;
 	if (!("R" in window)) {
 		alert('Something has gone wrong!');
 		return;
@@ -33,28 +34,16 @@ $(function () {
 
 		var player = new metronomik.player("player", R.player);
 
-		$(".m-playToggle").one("click", function () {
-			R.player.queue.add("a171827");
+		$(".m-playToggle").click(function(){
+
+			console.log("awesome");
+			R.player.queue.add(Tune.tracks[p]);
+			p = p + 1;
 		});
 
 	});
 
-
-
-
 });
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
