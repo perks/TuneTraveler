@@ -29,11 +29,14 @@ jQuery(function($){
 
 $(function () {
 
-	var p = 0;
+
+
+
 	if (!("R" in window)) {
 		alert('Something has gone wrong!');
 		return;
 	}
+
 
 	toastr.options = {
 	  "closeButton": true,
@@ -55,10 +58,14 @@ $(function () {
 
 		var player = new metronomik.player("player", R.player);
 
+
+
 		$(".m-playToggle").one("click", function(){
 			if(!Tune.tracks) {
 				toastr.warning("Sorry no tracks matched");
 			}
+
+
 
 
 

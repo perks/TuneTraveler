@@ -179,8 +179,26 @@
         // Pretty simple huh?
         var scene = document.getElementById('scene');
         var parallax = new Parallax(scene);
+        toastr.options = {
+          "closeButton": true,
+          "debug": false,
+          "positionClass": "toast-top-full-width",
+          "onclick": null,
+          "showDuration": "500",
+          "hideDuration": "1000",
+          "timeOut": "5000",
+          "extendedTimeOut": "1000",
+          "showEasing": "swing",
+          "hideEasing": "linear",
+          "showMethod": "fadeIn",
+          "hideMethod": "fadeOut"
+        };
+
+        toastr.error("To get full access to the songs and not 30 second snippets", "<a href='http://rdio.com' target='_blank'>Register at Rdio!</a>");
 
         </script>
+
+
 
 
     </body>
