@@ -49,8 +49,7 @@ input[type=text] {
   padding: 0;
   z-index:-1;
   position: fixed;
-  bottom: 0;
-  top: 0;
+  bottom: -40px;
   left: -400px;
   right: -400px;
   max-width: 1800px;
@@ -60,27 +59,29 @@ input[type=text] {
 
 
 .layer:nth-child(1) {
-  position: relative;
+  position: fixed;
   opacity: 0.98;
 
 }
 .layer:nth-child(2) {
-  position: relative;
+  position: fixed;
   opacity: 0.92;
 
 }
 .layer:nth-child(3) {
-  position: relative;
+  position: fixed;
   opacity: 1.00;
 
 }
 .layer:nth-child(4) {
-  position: relative;
+  position: fixed;
   opacity: 1.00;
+  bottom: 1px;
 
 }
 .layer:nth-child(5) {
-  position: relative;
+  position: fixed;
+  bottom: 1px;
   opacity: 0.90;
 }
 .layer:nth-child(6) {
