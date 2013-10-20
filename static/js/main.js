@@ -60,6 +60,7 @@ $(function () {
 			}
 			R.player.queue.add(Tune.tracks[p]);
 			p = p + 1;
+			R.player.play();
 		});
 
 		R.player.on('change:playingTrack',   function(data) {
