@@ -15,7 +15,8 @@ jQuery(function($){
 			    artist_location: location,
 			    bucket: ["id:rdio-us-streaming", "years_active", "artist_location"],
 			  },
-			    success: callbackF
+			    success: callbackF,
+			    error: function() { console.log("error");}
 			  });
 		};
 		return tunez;
@@ -54,13 +55,13 @@ $(function () {
 
 		var player = new metronomik.player("player", R.player);
 
-		$(".m-playToggle").click(function(){
+		$(".m-playToggle").one("click", function(){
 			if(!Tune.tracks) {
 				toastr.warning("Sorry no tracks matched");
 			}
-			R.player.queue.add(Tune.tracks[p]);
-			p = p + 1;
-			R.player.play();
+
+
+
 		});
 
 		R.player.on('change:playingTrack',   function(data) {
