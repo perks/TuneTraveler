@@ -37,17 +37,23 @@
 
         function getArtistData(data){
 
-          if(Tune.tracks || Tune.rdio) {
-            Tune.tracks = [];
-            Tune.rdio = [];
-          }
-          R.player.queue.clear();
+          console.log("gets here");
+
+            if(Tune.tracks.length > 0) {
+              Tune.tracks.length = 0;
+              rdioIDs.length = 0;
+              Tune.artists.length = 0;
+              Tune.rdio.length = 0;
+              R.player.queue.clear();
+              toastr.success("Next songs will be updated to reflect","Settings Changed!");
+            }
             Tune.response = data.response;
             Tune.artists = data.response.artists;
             var regEx = /[^:]+$/;
             var name;
             var id;
             for(var artist in Tune.artists) {
+              console.log(artist);
               name = Tune.artists[artist].name;
               id = Tune.artists[artist].foreign_ids[0].foreign_id.match(regEx).toString();
               rdioIDs.push({"name":name, "id":id});
@@ -63,6 +69,7 @@
                         },
                         success: function(response) {
                             Tune.tracks.push(response.result[0].key);
+                            R.player.queue.add(response.result[0].key)
 
                         },
 
@@ -72,7 +79,16 @@
                       });
 
                 }
-            }
+
+
+
+
+
+          }
+
+
+
+
 
 
 
